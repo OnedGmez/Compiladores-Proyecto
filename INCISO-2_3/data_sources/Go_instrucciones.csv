@@ -2,7 +2,8 @@ Code_GO;Instruccion
 package;paquete
 main;principal
 import;importar
-"""fmt""";paquete de formato
+fmt;paquete de formato
+";comillas
 //;comentario simple
 func;funcion
 (;apertura de parentesis
