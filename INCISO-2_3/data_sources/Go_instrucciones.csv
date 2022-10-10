@@ -10,6 +10,7 @@ func;funcion
 );cierre de parentesis
 {;apertura de llave
 };cierre de llave
-fmt.Println;imprimir linea
+.;punto
+Println;imprimir linea
 /*;apertura comentario multiple
 */;cierre comentario multiple
