@@ -59,7 +59,7 @@ func AnalizarPalabra(Palabra string, Contador int) {
 	var PalabraTMP string
 	var SimboloTMP string
 	var LetraRuna rune
-	var IndexLetra int
+
 	if strings.ContainsAny(Palabra, "{}()/*\"") {
 		LetrasPalabra := Tokenizador([]byte(Palabra), "")
 		for _, Letra := range LetrasPalabra {
@@ -77,16 +77,6 @@ func AnalizarPalabra(Palabra string, Contador int) {
 					PalabraTMP = PalabraTMP + string(LetraRuna)
 				} else {
 					PalabraTMP = string(LetraRuna)
-				}
-
-				IndexLetra = strings.LastIndex(Palabra, string(LetraRuna))
-
-				if IndexLetra == len(Palabra) {
-					if PalabraTMP != "" {
-						PalabraTMP = PalabraTMP + "," + strconv.Itoa(Contador)
-						InstruccionesGO(PalabraTMP)
-						PalabraTMP = ""
-					}
 				}
 
 				break
@@ -110,21 +100,26 @@ func AnalizarPalabra(Palabra string, Contador int) {
 					SimboloTMP = ""
 				}
 
-				IndexLetra = strings.LastIndex(Palabra, string(LetraRuna))
+			}
+		}
+		IndexLetra := strings.LastIndex(Palabra, string(LetraRuna))
 
-				if IndexLetra == len(Palabra) {
-					if SimboloTMP != "" {
-						SimboloTMP = SimboloTMP + "," + strconv.Itoa(Contador)
-						InstruccionesGO(SimboloTMP)
-						SimboloTMP = ""
-					}
-				}
+		if IndexLetra == len(Palabra) {
+			if PalabraTMP != "" {
+				PalabraTMP = PalabraTMP + "," + strconv.Itoa(Contador)
+				InstruccionesGO(PalabraTMP)
+				PalabraTMP = ""
+			}
+
+			if SimboloTMP != "" {
+				SimboloTMP = SimboloTMP + "," + strconv.Itoa(Contador)
+				InstruccionesGO(SimboloTMP)
+				SimboloTMP = ""
 			}
 		}
 
 	} else {
 		Instruccion = Palabra + "," + strconv.Itoa(Contador)
-		fmt.Println(Instruccion)
 		InstruccionesGO(Instruccion)
 	}
 }
