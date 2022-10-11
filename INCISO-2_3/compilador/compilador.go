@@ -59,6 +59,7 @@ func AnalizarPalabra(Palabra string, Contador int) {
 	var PalabraTMP string
 	var SimboloTMP string
 	var LetraRuna rune
+	var IndexLetra int = 0
 
 	if strings.ContainsAny(Palabra, "{}()/*\"") {
 		LetrasPalabra := Tokenizador([]byte(Palabra), "")
@@ -77,6 +78,14 @@ func AnalizarPalabra(Palabra string, Contador int) {
 					PalabraTMP = PalabraTMP + string(LetraRuna)
 				} else {
 					PalabraTMP = string(LetraRuna)
+				}
+
+				if len(Palabra)-1 == IndexLetra {
+					if PalabraTMP != "" {
+						PalabraTMP = PalabraTMP + "," + strconv.Itoa(Contador)
+						InstruccionesGO(PalabraTMP)
+						PalabraTMP = ""
+					}
 				}
 
 				break
@@ -99,23 +108,8 @@ func AnalizarPalabra(Palabra string, Contador int) {
 					InstruccionesGO(SimboloTMP)
 					SimboloTMP = ""
 				}
-
 			}
-		}
-		IndexLetra := strings.LastIndex(Palabra, string(LetraRuna))
-
-		if IndexLetra == len(Palabra) {
-			if PalabraTMP != "" {
-				PalabraTMP = PalabraTMP + "," + strconv.Itoa(Contador)
-				InstruccionesGO(PalabraTMP)
-				PalabraTMP = ""
-			}
-
-			if SimboloTMP != "" {
-				SimboloTMP = SimboloTMP + "," + strconv.Itoa(Contador)
-				InstruccionesGO(SimboloTMP)
-				SimboloTMP = ""
-			}
+			IndexLetra++
 		}
 
 	} else {
@@ -151,7 +145,7 @@ func LimpiezaData(NombreArchivo string) string {
 	} else {
 		DataProc := Tokenizador(Data, "\n")
 		for _, Linea := range DataProc {
-			if Linea != "" {
+			if (strings.TrimSpace(Linea)) != "" {
 				if DataNueva != "" {
 					DataNueva = DataNueva + "\n" + Linea
 				} else {
