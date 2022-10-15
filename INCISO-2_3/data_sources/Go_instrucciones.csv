@@ -1,0 +1,16 @@
+Code_GO;Instruccion
+package;paquete
+main;principal
+import;importar
+fmt;paquete de formato
+";comillas
+//;comentario simple
+func;funcion
+(;apertura de parentesis
+);cierre de parentesis
+{;apertura de llave
+};cierre de llave
+.;punto
+Println;imprimir linea
+/*;apertura comentario multiple
+*/;cierre comentario multiple

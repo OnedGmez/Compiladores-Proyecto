@@ -1,0 +1,1 @@
+Elabore un programa que reciba lea un archivo de un directorio y que traduzca el contenido de un archivo escrito el lenguaje de c++ (hola mundo) a un programa igual pero en lenguaje python.
