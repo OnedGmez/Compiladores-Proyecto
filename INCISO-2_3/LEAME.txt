@@ -1,0 +1,2 @@
+En caso de que de error al abrir el archivo, modificar en las rutas "INCISO-2_3" POR "."
+Motivo: En algunas computadoras por la forma de instalacion de GO funciona una ruta de acceso de archivo u otra.
