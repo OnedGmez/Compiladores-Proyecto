@@ -31,7 +31,7 @@ func main() {
 def: Función que servirá para llenar la variable que contiene las instrucciones GO y su equivalente en lenguaje Natural
 */
 func CargarInstrucciones() {
-	Data, err := ioutil.ReadFile("INCISO-2_3/data_sources/Go_instrucciones.csv")
+	Data, err := ioutil.ReadFile("../data_sources/Go_instrucciones.csv")
 	if err != nil {
 		fmt.Println("Error al abrir archivo")
 	} else {
@@ -45,7 +45,7 @@ def: Función que nos ayudará a leer el archivo de GO para analizarlo posterior
 */
 func GenerarInstrucciones(NombreArchivo string) {
 	Contador := 0
-	Archivo, err := ioutil.ReadFile("INCISO-2_3/data_sources/Nuevo_" + NombreArchivo)
+	Archivo, err := ioutil.ReadFile("../data_sources/Nuevo_" + NombreArchivo)
 	if err != nil {
 		fmt.Println("Error al abrir archivo")
 	} else {
@@ -204,7 +204,7 @@ return: Devuelve una variable de tipo string que contiene todo el código go sin
 */
 func LimpiezaData(NombreArchivo string) string {
 	var DataNueva string
-	Data, err := ioutil.ReadFile("INCISO-2_3/data_sources/" + NombreArchivo)
+	Data, err := ioutil.ReadFile("../data_sources/" + NombreArchivo)
 	if err != nil {
 		return "No se puede abrir el archivo"
 	} else {
@@ -230,7 +230,7 @@ def: Función que nos generará el archivo que deseamos
 */
 func NuevoArchivo(Prefijo string, NombreArchivo string, Data []byte) {
 	NuevoNombre := Prefijo + "_" + NombreArchivo
-	err := ioutil.WriteFile("INCISO-2_3/data_sources/"+NuevoNombre, Data, 0644)
+	err := ioutil.WriteFile("../data_sources/"+NuevoNombre, Data, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
